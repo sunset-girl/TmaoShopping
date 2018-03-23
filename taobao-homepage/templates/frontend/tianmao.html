@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+	<title>天猫商城</title>
+	<meta charset="utf-8">
+</head>
+<link rel="stylesheet" type="text/css" href="../../static/css/tianmao.css" />
+<script>
+    window.onload = function() {
+        //通过选择小图片呈现相应的大图片
+        function findid(tar) {
+            var target = document.getElementById(tar);
+            var spans = target.getElementsByTagName("span");
+            var lis = target.getElementsByTagName("li");
+            var length = spans.length;
+            for (var i = 0; i < length; i++) {
+                spans[i].index = i;
+                spans[i].onmouseover = function () {
+                    for (var j = 0; j < length; j++) {
+                        spans[j].className = "";
+                        lis[j].className = "";
+                    }
+                    this.className = "current";
+                    lis[this.index].className = "show";
+                }
+            }
+        }
+
+        findid("one");
+
+        //放大器部分
+        function amplifys(tar) {
+            var fdj = document.getElementById(tar);
+            var small = fdj.children[0];
+            var big = fdj.children[1];
+            var mask = small.children[1];
+            var bigimg = big.children[0];
+            small.onmouseover = function () {
+                mask.style.display = "block";
+                big.style.display = "block";
+
+            }
+            small.onmouseout = function () {
+                mask.style.display = "none";
+                big.style.display = "none";
+
+            }
+            small.onmousemove = function (event) {
+                var event = event || window.event;
+                var x = event.clientX - this.offsetParent.offsetLeft - mask.offsetWidth / 2 - 10;
+                var y = event.clientY - this.offsetParent.offsetTop - mask.offsetHeight / 2 ;
+
+                if (x < 0) {
+                    x = 0;
+                }
+                else if (x > small.offsetWidth - mask.offsetWidth) {
+                    x = small.offsetWidth - mask.offsetWidth;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                else if (y > small.offsetHeight - mask.offsetHeight) {
+                    y = small.offsetHeight - mask.offsetHeight;
+                }
+                mask.style.left = x + "px";
+                mask.style.top = y + "px";
+                bigimg.style.left = -x * big.offsetWidth / small.offsetWidth + "px";
+                bigimg.style.top = -y * big.offsetHeight / small.offsetHeight + "px";
+            }
+        }
+
+        amplifys("fdj1");
+        amplifys("fdj1");
+
+        /*最右边的鼠标滑动时出现*/
+        function ocur(target) {
+            var tars = document.getElementById(target);
+            var spans = tars.getElementsByTagName("span");
+            var tar = document.getElementById("position-box-id");
+            var span = tar.getElementsByTagName("span");
+            for (var i = 0; i < spans.length; i++) {
+                (function (i) {
+                    var that = span[i];
+                    spans[i].onmouseover = function () {
+                        that.style.display = "block";
+                    }
+                    spans[i].onmouseout = function () {
+                        that.style.display = "none";
+                    }
+                })(i)
+			}
+        }
+        ocur("position-boxs-id");
+    }
+
+</script>
+<body>
+	<!--一直位于最右边的购物车选择-->
+    <div class="position-right" id="position-boxs-id">
+	<span><img src="../../static/images/position-right1.png"></span>
+	<span><img src="../../static/images/position-right2.png"></span>
+	<span><img src="../../static/images/position-right3.png"></span>
+	<span><img src="../../static/images/position-right4.png"></span>
+	<span><img src="../../static/images/position-right5.png"></span>
+	<span><img src="../../static/images/position-right6.png"></span>
+	<span><img src="../../static/images/position-right7.png"></span>
+	</div>
+    <div class="position-box" id="position-box-id">
+		<span class="fix-too1"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+		<span class="fix-too2"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+		<span class="fix-too3"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+		<span class="fix-too4"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+		<span class="fix-too5"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+		<span class="fix-too6"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+		<span class="fix-too7"><img src="../../static/images/position-right-tishi.jpg" alt=""></span>
+	</div>
+
+
+	<div class="header clearfix"></div>
+      	 <!--头部-->
+   <header>
+	   <div class="header-nav">
+		   <nav>
+			   <div class="left">
+				   <img src="../../static/images/house.png" alt="" class="house">
+				   <a>天猫首页</a>
+				   <a>喵, 欢迎来天猫</a>
+				   <a>请登陆</a>
+				   <a>免费注册</a>
+			   </div>
+			   <div class="right">
+				   <a>我的淘宝</a>
+				   <img src="../../static/images/shopping.png" alt="">
+				   <a>购物车0件</a>
+				   <a>收藏夹 |</a>
+				   <img src="../../static/images/phone.png" alt="">
+				   <a>手机版</a>
+				   <a>淘宝网</a>
+				   <a>商家支持</a>
+				   <a>网站导航</a>
+			   </div>
+		   </nav>
+	   </div>
+	   <div class="header-inner">
+		   <div class="inner">
+			   <div class="left">
+				   <a href="//www.tmall.com/" title="天猫Tmall.com" class="tianmao">
+					   <img src="../../static/images/div-tianmao.jpg" alt="">
+				   </a>
+				   <div class="one">
+					   <strong>博洋家纺官方旗舰店</strong>
+					   <div class="slog-sell">品牌直销</div>
+					   <a href="" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。">
+						   <img src="../../static/images/div-logo.jpg">
+					   </a>
+				   </div>
+				   <div class="two">
+					   <p class="jiu-two-same">
+						   <s>描述</s><s>服务</s><s>物流</s>
+					   </p>
+					   <span class="green">4.8 <img src="../../static/images/downward.png" alt=""></span>
+					   <span class="green">4.7 <img src="../../static/images/downward.png" alt=""></span>
+					   <span class="reds">4.8 <img src="../../static/images/upward.png" alt=""></span>
+				   </div>
+			   </div>
+
+			   <div class="right">
+				   <input type="text" placeholder="搜索 天猫 商品/品牌/店铺">
+				   <button class="red">搜天猫</button>
+				   <button class="black">搜本店</button>
+				   <ul>
+					   <li><a>四件套</a></li>
+					   <li><a>被套</a></li>
+					   <li><a>四件套全棉</a></li>
+					   <li><a>床上四件套</a></li>
+					   <li><a>床单</a></li>
+					   <li><a>博洋家纺</a></li>
+					   <li ><a class="last">床上用品四件套纯棉</a></li>
+				   </ul>
+			   </div>
+		   </div>
+	   </div>
+	<div class="both"></div>
+</header>
+
+   <!--中部-->
+   <section>
+	<div class="intro">
+		<!--可以选择商品并且将商品放大详细查看-->
+		<div class="box" id="one">
+			<div class="box-top">
+				<ul>
+					<li class="show">
+						<div class="boxs" id="fdj1">
+						    <!--小盒子-->
+							<div class="small">
+								<img src="../../static/images/one.jpg" alt=""/>
+								<div class="mask"></div>
+							</div>
+							<!--大盒子-->
+							<div class="big">
+								<img src="../../static/images/one.jpg" alt=""/>
+							</div>
+					    </div>
+					</li>
+					<li>
+						<div class="boxs" id="fdj2">
+							<!--小盒子-->
+							<div class="small">
+								<img src="../../static/images/one.jpg" alt=""/>
+								<div class="mask"></div>
+							</div>
+							<!--大盒子-->
+							<div class="big">
+								<img src="../../static/images/one.jpg" alt=""/>
+							</div>
+						</div>
+					</li>
+					<li><img src="../../static/images/three.jpg"></li>
+					<li><img src="../../static/images/four.jpg"></li>
+					<li><img src="../../static/images/five.jpg"></li>
+				</ul>
+			</div>
+			<div class="box-footer">
+				<span class="current"><img src="../../static/images/one.jpg"></span>
+				<span><img src="../../static/images/two.jpg"></span>
+				<span><img src="../../static/images/three.jpg"></span>
+				<span><img src="../../static/images/four.jpg"></span>
+				<span><img src="../../static/images/five.jpg"></span>
+			</div>
+			<div class="intro-share">
+				<img src="../../static/images/intro-share.png" alt="">
+			</div>
+		</div>
+
+		<!--商是的详细介绍说明-->
+		<div class="detail">
+				<h4>博洋家纺四件套全棉简约纯色1.8m床单纯棉被套春季双人床上用品</h4>
+				<p class="reds">纯色简约全棉套件 299元起</p>
+			<div class="banner">
+					<img src="../../static/images/section-detail-title.png" alt="">
+					<span>该商品将于2月27日正式售卖，请提前加购！</span>
+			</div>
+			<div class="inner">
+					<img src="../../static/images/section-detail-inner.png" alt="">
+					<span>全天猫实物商品通用</span>
+					<a class="ward">去刮奖</a>
+					<p><span>专柜价</span><a class="first">￥18.00-1038.00</a></p>
+					<p><span>促销价</span><a class="second">￥299.00-399.00</a></p>
+					<p><span>开学价</span><a class="three">￥299.00-399.00</a></p>
+			</div>
+			<div class="detail-intro">
+					<div class="address">
+						<span class="one same-font">运费</span>
+						<span>浙江宁波 至</span>
+						<span>张家界</span>
+						<span>快递：0.00</span>
+					</div>
+					<ul>
+						<li>月销量<span>186</span></li>
+						<li>累计评价<span >5708</span></li>
+						<li class="dis">送天猫积分<span class="gre">149</span>起</li>
+					</ul>
+				</div>
+				<div class="cols">
+					<span class="cols-first same-font">颜色分类</span>
+					<ul class="col">
+						<li><img src="../../static/images/one.jpg" alt=""></li>
+						<li><img src="../../static/images/two.jpg" alt=""></li>
+						<li><img src="../../static/images/three.jpg" alt=""></li>
+						<li><img src="../../static/images/four.jpg" alt=""></li>
+						<li><img src="../../static/images/five.jpg" alt=""></li>
+						<li><img src="../../static/images/ones.jpg" alt=""></li>
+						<li><img src="../../static/images/twos.jpg" alt=""></li>
+						<li><img src="../../static/images/threes.jpg" alt=""></li>
+						<li><img src="../../static/images/fours.jpg" alt=""></li>
+						<li><img src="../../static/images/fives.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="size">
+					<ul>
+						<li class="first same-font">适用床尺寸</li>
+						<li>适用1.2m床建议搭配150*210被芯</li>
+						<li class="two">适用1.5m床建议搭配200*230被芯</li>
+						<li class="three">适用1.8-2m床建议搭配220*240被芯</li>
+					</ul>
+				</div>
+				<div class="num">
+					<span class="same-font num-one">数量</span>
+					<span><input type="text" value="1"></span>
+					<span class="use-pos1"><img src="../../static/images/num1.png"></span>
+					<span class="use-pos"><img src="../../static/images/nums2.png"></span>
+					<span><em>件</em></span>
+					<span><em>库存3158件</em></span>
+				</div>
+				<div class="buy">
+					<button class="but1">立即购买</button>
+					<button class="but2"><img src="../../static/images/shopping2.png" alt="">加入购物车</button>
+				</div>
+				<div class="ensure">
+					<span>服务承诺</span>
+					<span>正品保证</span>
+					<span>急速退款</span>
+					<span>赠运费险</span>
+					<span>七天无理由退换</span>
+					<span>支付方式</span>
+				</div>
+			</div>
+
+		<!--看了又看-->
+		<div class="see-again">
+			<div class="see-top">
+				<s></s>
+				<span>看了又看</span>
+			</div>
+			<div class="see-center">
+				<ul>
+					<li>
+						<img src="../../static/images/one.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/fours.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/three.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/four.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/fours.jpg" alt="">
+						<p>￥299</p>
+					</li>
+				</ul>
+			</div>
+			<div class="see-foot">
+				<ul>
+					<li>
+						<button><img src="../../static/images/up.png" alt=""></button>
+					</li>
+					<li>
+						<button><img src="../../static/images/down.png" alt=""></button>
+					</li>
+				</ul>
+			</div>
+			<!--天猫懂你，猜我喜欢-->
+			<div class="like-pic">
+				<div class="like-top">
+					<s></s>
+					<span>天猫懂你，猜你喜欢</span>
+				</div>
+				<ul>
+					<li>
+						<img src="../../static/images/one.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/fours.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/three.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/four.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/fours.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/one.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/fours.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/three.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/four.jpg" alt="">
+						<p>￥299</p>
+					</li>
+					<li>
+						<img src="../../static/images/fours.jpg" alt="">
+						<p>￥299</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+	</div>
+	<!--床橱介绍-->
+	<div class="bedboard">
+			<span class="shows">四季组途</span>
+			<span>馨雅型竹炭纤维床褥</span>
+		<ul>
+			<li><img src="../../static/images/a.jpg" alt=""><p>价格 ¥289.00-389.00</p></li>
+			<li><img src="../../static/images/b.jpg" alt=""><p>价格 价格 ¥389.00</p></li>
+			<li><img src="../../static/images/c.jpg" alt=""><p>价格 价格 ¥389.00</p></li>
+			<li><img src="../../static/images/d.jpg" alt=""><p>价格 价格 ¥389.00</p></li>
+			<li class="las">
+				<button><img src="../../static/images/up.png" alt=""></button>
+				<button><img src="../../static/images/down.png" alt=""></button>
+			</li>
+		</ul>
+		<div class="taochang">
+			<p>套餐价： <span>¥289.00-389.00</span></p>
+			<button>查看套餐</button>
+		</div>
+
+	</div>
+	<!--博洋家纺旗舰店-->
+	<div class="qijian">
+		<div class="left">
+			<!--博洋家纺旗舰店的详细内容介绍-->
+			<div class="shop-intro">
+				<div class="top">
+					<a href="">博洋家纺旗舰店</a>
+					<img src="../../static/images/div-logo.jpg" alt="">
+				</div>
+				<div class="center">
+					<span class="jiu">9</span>
+					<span>天猫九年店</span>
+					<div class="two">
+						<p class="jiu-two-same">描述  服务  物流</p>
+						<span class="green">4.8 <img src="../../static/images/downward.png" alt=""></span>
+						<span class="green">4.7 <img src="../../static/images/downward.png" alt=""></span>
+						<span class="reds">4.8 <img src="../../static/images/upward.png" alt=""></span>
+					</div>
+					<div class="bottom">
+						<button class="jd">进店逛逛</button>
+						<button class="sc">收藏店铺</button>
+					</div>
+			    </div>
+				<div class="bottom">
+					<div class="title"><a href="">本店搜索</a></div>
+					<div class="key">关键字: <input type="text"></div>
+					<div class="bet-money">价钱: <input type="text" placeholder="￥"> - <input type="text" placeholder="￥"></div>
+					<button class="sousuo"><img src="../../static/images/checks.png" ></button>
+					<div class="four-jt">
+						<a>四件套</a>
+						<a>保暖磨毛</a>
+						<a>羽绒被</a>
+					</div>
+				</div>
+		</div>
+			<!--博洋家纺旗舰店的用品图片-->
+			<div class="shop-pic">
+				<ul>
+					<li><img src="../../static/images/one.jpg"/></li>
+					<li><img src="../../static/images/d.jpg"/></li>
+					<li><img src="../../static/images/fives.jpg"/></li>
+					<li><img src="../../static/images/four.jpg"/></li>
+					<li><img src="../../static/images/three.jpg"/></li>
+					<li><img src="../../static/images/threes.jpg"/></li>
+					<li><img src="../../static/images/twos.jpg"/></li>
+					<li><img src="../../static/images/fours.jpg"/></li>
+					<li><img src="../../static/images/ones.jpg"/></li>
+				</ul>
+			</div>
+			<!--新品区介绍-->
+			<div class="left-shop-news">
+				<img src="../../static/images/left-shop-news1.png">
+				<img src="../../static/images/left-shop-news2.png">
+				<img src="../../static/images/left-shop-news3.png">
+			</div>
+			<!--又是博洋家纺旗舰店的用品图片-->
+			<div class="left-bottom">
+				<ul>
+					<li><img src="../../static/images/one.jpg"/></li>
+					<li><img src="../../static/images/d.jpg"/></li>
+					<li><img src="../../static/images/fives.jpg"/></li>
+					<li><img src="../../static/images/four.jpg"/></li>
+					<li><img src="../../static/images/three.jpg"/></li>
+					<li><img src="../../static/images/threes.jpg"/></li>
+					<li><img src="../../static/images/twos.jpg"/></li>
+					<li><img src="../../static/images/fours.jpg"/></li>
+					<li><img src="../../static/images/ones.jpg"/></li>
+					<li><img src="../../static/images/one.jpg"/></li>
+					<li><img src="../../static/images/d.jpg"/></li>
+					<li><img src="../../static/images/fives.jpg"/></li>
+					<li><img src="../../static/images/four.jpg"/></li>
+					<li><img src="../../static/images/three.jpg"/></li>
+					<li><img src="../../static/images/threes.jpg"/></li>
+					<li><img src="../../static/images/twos.jpg"/></li>
+					<li><img src="../../static/images/fours.jpg"/></li>
+					<li><img src="../../static/images/ones.jpg"/></li>
+				</ul>
+			</div>
+		</div>
+		<div class="right">
+			<div class="shop-introd">
+				<p>
+					<span class="one">商品详情</span>
+					<span>累计评价 5696</span>
+					<span class="last">手机购买 <img src="../../static/images/erwei.png" alt=""></span>
+				</p>
+			</div>
+			<div class="shop-neirong">
+				<p>品牌名称:博洋</p>
+				<p>产品参数:</p>
+				<ul>
+					<li>件数: 4</li>
+					<li>件被面材质: 棉</li>
+					<li>品牌: 博洋</li>
+					<li>货号: W91603037308-3</li>
+					<li>被里材质: 棉</li>
+					<li>棉种类: 棉成分</li>
+					<li>含量: 100%</li>
+					<li>床品工艺: 其他</li>
+					<li>适用床尺寸: 适用1.2m床建议搭配150*..</li>
+					<li>图案: 纯色</li>
+					<li>款式: 床单式</li>
+					<li>颜色分类: 途 遐 莱 暮 草莓派...</li>
+					<li>产品等级: 合格品</li>
+					<li>风格: 简约</li>
+					<li>面料支数: 40支</li>
+					<li> 面料密度: 133x72</li>
+					<li>织造工艺: 斜纹</li>
+				</ul>
+			</div>
+			<!--2018春夏上新-->
+			<div class="shop-news">
+				<div class="big">
+					<img src="../../static/images/fours.jpg" >
+				</div>
+				<div class="small">
+					<img src="../../static/images/school-time.png" >
+				</div>
+				<div class="middle">
+					<img src="../../static/images/ones.jpg" >
+				</div>
+				<!--图片浏览-->
+				<div class="Rshow-pic">
+					<ul>
+                        <li><img src="../../static/images/pic1.png" alt=""></li>
+                        <li><img src="../../static/images/pic2.png" alt=""></li>
+                        <li><img src="../../static/images/pic3.png" alt=""></li>
+                        <li><img src="../../static/images/pic4.png" alt=""></li>
+                        <li><img src="../../static/images/pic5.png" alt=""></li>
+                        <li><img src="../../static/images/pic5.png" alt=""></li>
+                        <li><img src="../../static/images/pic3.png" alt=""></li>
+                        <li><img src="../../static/images/pic2.png" alt=""></li>
+                        <li><img src="../../static/images/pic1.png" alt=""></li>
+                        <li><img src="../../static/images/pic4.png" alt=""></li>
+                    </ul>
+				</div>
+				<!--价钱浏览-->
+				<div class="Rshow-mon">
+					<ul>
+						<li><img src="../../static/images/money1.png" alt=""></li>
+						<li><img src="../../static/images/money2.png" alt=""></li>
+						<li><img src="../../static/images/money3.png" alt=""></li>
+						<li><img src="../../static/images/money4.png" alt=""></li>
+					</ul>
+				</div>
+				<!--2018春夏上新-开学报到-->
+				<div class="both"></div>
+				<div class="Rshow-news-aga">
+					<div class="bigs">
+						<img src="../../static/images/aga-pc1.png" alt="">
+					</div>
+					<div class="smalls">
+						<img src="../../static/images/aga-pc2.png" alt="">
+						<p></p>
+					</div>
+					<div class="middles">
+						<img src="../../static/images/aga-pc3.png" alt="">
+					</div>
+				</div>
+				<!--各种图片介绍价钱-->
+				<div class="shows-bed">
+					<ul>
+						<li><img src="../../static/images/bed1.png" alt=""></li>
+						<li><img src="../../static/images/bed2.png" alt=""></li>
+						<li><img src="../../static/images/bed3.png" alt=""></li>
+						<li><img src="../../static/images/bed4.png" alt=""></li>
+						<li><img src="../../static/images/bed5.png" alt=""></li>
+						<li><img src="../../static/images/bed6.png" alt=""></li>
+						<li><img src="../../static/images/bed7.png" alt=""></li>
+						<li><img src="../../static/images/bed8.png" alt=""></li>
+						<li><img src="../../static/images/bed9.png" alt=""></li>
+					</ul>
+				</div>
+				<!--巨大的图片-->
+				<div class="huge-pic">
+					<img src="../../static/images/huge-pic1.jpg" alt="">
+					<img src="../../static/images/huge-pic2.jpg" alt="">
+					<img src="../../static/images/huge-pic3.jpg" alt="">
+					<img src="../../static/images/huge-pic4.jpg" alt="">
+					<img src="../../static/images/huge-pic5.jpg" alt="">
+					<img src="../../static/images/huge-pic6.jpg" alt="">
+					<img src="../../static/images/huge-pic7.jpg" alt="">
+					<img src="../../static/images/huge-pic8.jpg" alt="">
+					<img src="../../static/images/huge-pic9.jpg" alt="">
+				</div>
+				<!--商品参数-->
+				<div class="show-canshu">
+					<div class="canshu">
+						<img src="../../static/images/canshu.jpg" alt="">
+						<div class="canshu-table">
+							<table>
+							<tr>
+								<td>品        牌</td>
+								<td>博洋家纺</td>
+							</tr>
+							<tr>
+								<td>商 品 名 称</td>
+								<td class="dir">蓝莓派\香芋派\草莓派\遐\途\莱\诺\汐\泽\雅\迹</td>
+							</tr>
+							<tr>
+								<td>货号</td>
+								<td>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+									<p>蓝莓派：        1.2米床：W91303218331   1.5米床：W91304218131         1.8米床：W91304218231</p>
+								</td>
+							</tr>
+							<tr>
+								<td>规 格 尺 寸</td>
+								<td class="dir">
+									<p>1.2米：被套150*210cm*1   床单200*240cm*1   枕套48*74cm*1</p>
+									<p>1.2米：被套150*210cm*1   床单200*240cm*1   枕套48*74cm*1</p>
+									<p>1.2米：被套150*210cm*1   床单200*240cm*1   枕套48*74cm*1</p>
+								</td>
+							</tr>
+							<tr>
+								<td>产品成分含量</td>
+								<td>100%棉</td>
+							</tr>
+							<tr>
+								<td>产 品 重 量</td>
+								<td class="dir">
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+									<p>遐：    1.5米床：净重2.21kg左右          毛重2.48kg左右</p>
+								</td>
+							</tr>
+							<tr>
+								<td>产品执行标准</td>
+								<td>GB/T 22844-2009	产  品 等 级	合格品</td>
+							</tr>
+						</table>
+						</div>
+						<img src="../../static/images/biaoqian.jpg" alt="">
+						<img src="../../static/images/biaoqian2.jpg" alt="">
+						<img src="../../static/images/biaoqian3.jpg" alt="">
+						<div class="biaoqian">
+							<img src="../../static/images/biaoqian4.png">
+							<img src="../../static/images/biaoqian5.png">
+							<img src="../../static/images/biaoqian6.png">
+						</div>
+						<div class="biao-las">
+							<img src="../../static/images/guangyu-qijiandian.png" alt="">
+							<img src="../../static/images/jiageshuom.png">
+						</div>
+						<div class="conten-pinjia">
+							<p>累计评价 5695</p>
+							<div class="pinjia-all">
+								<div class="pinjia-one">
+									<h5>与描述相符</h5>
+									<strong>4.8</strong>
+									<img src="../../static/images/pinjia-xing.png" alt="">
+								</div>
+								<div class="pinjia-two">
+									大家都写到
+								</div>
+								<div class="pinjia-thre">
+									<span class="pinjia-left"><a>质量不错(62)</a></span>
+									<span><a>颜色不错(25)</a></span>
+									<span><a>材质不错(19)</a></span>
+									<span><a>服务态度好(12)</a></span>
+									<span><a>跟描述一致(12)</a></span>
+									<span class="pinjia-left"><a>手感不错(12)</a></span>
+									<span><a class="pinjia-las">小贵(16)</a></span>
+									<span class="pinjia-pos"><img src="../../static/images/num2.png" alt=""></span>
+								</div>
+							</div>
+							<div class="pinjia-biaoge">
+								<form action="">
+									<input type="radio" id="all" name="sex">
+									<label for="all">全部</label>
+									<input type="radio" id="call" name="sex">
+									<label for="call">追评(170)</label>
+									<input type="radio" id="pic" name="sex">
+									<label for="pic" >图片(192)</label>
+								</form>
+							</div>
+						</div>
+						<div class="xiangxi-pinjia">
+							<table>
+								<tbody>
+								<tr>
+									<td>
+										<p>跟图片一样</p>
+										<p><img src="../../static/images/xiangxi-pinjia.png" alt=""></p>
+									</td>
+									<td>
+										<p>适用床尺寸：1.5m建议搭配200*230被芯颜色分类：多米小兔</p>
+									</td>
+								</tr>
+								<tr>
+									<td><p>买了2套给爸妈用，他们非常喜欢。质量颜色都不错。</p></td>
+									<td><p>适用床尺寸：1.5m建议搭配200*230被芯颜色分类：粉色物语</p></td>
+								</tr>
+								<tr>
+									<td>
+										<p>跟图片一样</p>
+										<p><img src="../../static/images/xiangxi-pinjia.png" alt=""></p>
+									</td>
+									<td>
+										<p>适用床尺寸：1.5m建议搭配200*230被芯颜色分类：多米小兔</p>
+									</td>
+								</tr>
+								<tr>
+									<td><p>买了2套给爸妈用，他们非常喜欢。质量颜色都不错。</p></td>
+									<td><p>适用床尺寸：1.5m建议搭配200*230被芯颜色分类：粉色物语</p></td>
+								</tr>
+								<tr>
+									<td>
+										<p>跟图片一样</p>
+										<p><img src="../../static/images/xiangxi-pinjia.png" alt=""></p>
+									</td>
+									<td>
+										<p>适用床尺寸：1.5m建议搭配200*230被芯颜色分类：多米小兔</p>
+									</td>
+								</tr>
+								<tr>
+									<td><p>买了2套给爸妈用，他们非常喜欢。质量颜色都不错。</p></td>
+									<td><p>适用床尺寸：1.5m建议搭配200*230被芯颜色分类：粉色物语</p></td>
+								</tr>
+
+								</tbody>
+							</table>
+						</div>
+						<div class="fenye">
+							<img src="../../static/images/fenye-top.png" alt="">
+							<ul>
+								<li class="grey"> << 上一页 </li>
+								<li class="grey juli">1</li>
+								<li class="blue juli">2</li>
+								<li class="blue juli">3</li>
+								<li class="grey border-kong juli">...</li>
+								<li class="blue"> 下一页 >> </li>
+							</ul>
+						</div>
+						<div class="linsanbaba">
+							<img src="../../static/images/ling388.png" alt="">
+						</div>
+						<div class="fuwuqingk">
+							<h5>店铺30天服务情况</h5>
+						</div>
+						<div class="jiufentuikuang">
+							<ul>
+								<li><a href="">纠纷退款率：</a><span class="reds"> 0.0000%</span><span>小于 0.0011% （行业均值）</span></li>
+								<li><a href="">仅退款自主完结时长：</a><span class="reds"> 0.44天</span><span>小于 1.09天 （行业均值）</span></li>
+								<li><a href="">退货退款自主完结时长：</a><span class="reds"> 5.11天</span><span>小于 6.43天 （行业均值）</span></li>
+								<li><a href="">退款自主完结率：</a><span class="reds">99.93%</span><span>大于 99.77% （行业均值）</span></li>
+							</ul>
+						</div>
+						<div class="dianpu-dongtaipinjia">
+							<div class="dianpu-left">
+								<ul>
+									<li>
+										<span>商品与描述相符： <a>4.8</a>分</span>
+										<img src="../../static/images/dianpu-left1.png" alt="">
+									</li>
+									<li>
+										<span>商家的服务态度： <a>4.7</a>分</span>
+										<img src="../../static/images/dianpu-left2.png" alt="">
+									</li>
+									<li>
+										<span>商家发货的速度： <a>4.8</a>分</span>
+										<img src="../../static/images/dianpu-left3.png" alt="">
+									</li>
+								</ul>
+							</div>
+							<div class="dianpu-right">
+								<div class="dianpu-top">
+									<em>4.8</em>分
+									<span class="dianpu-kong" ></span>
+									<em>共74262人</em>
+								</div>
+								<div class="dianpu-one">
+									<span class="dianpu-orange">5</span>
+									<span class="dianpu-grey">分</span>
+									<span class="rate-stat"></span>
+									<span class="dianpu-orange">88.95%</span>
+									<span class="dianpu-grey">(66055人)</span>
+								</div>
+								<div class="dianpu-two">
+									<span class="dianpu-orange">4</span>
+									<span class="dianpu-grey">分</span>
+									<span class="rate-stat"></span>
+									<span class="dianpu-orange"><6.61%/span>
+									<span class="dianpu-grey">(4906人)</span>
+								</div>
+								<div class="dianpu-three">
+									<span class="dianpu-orange">3</span>
+									<span class="dianpu-grey">分</span>
+									<span class="rate-stat"></span>
+									<span class="dianpu-orange">2.13%</span>
+									<span class="dianpu-grey">(1584人)</span>
+								</div>
+								<div class="dianpu-four">
+									<span class="dianpu-orange">2</span>
+									<span class="dianpu-grey">分</span>
+									<span class="rate-stat"></span>
+									<span class="dianpu-orange">0.54%</span>
+									<span class="dianpu-grey">(404人)</span>
+								</div>
+								<div class="dianpu-five">
+									<span class="dianpu-orange">1</span>
+									<span class="dianpu-grey">分</span>
+									<span class="rate-stat"></span>
+									<span class="dianpu-orange">1.60%</span>
+									<span class="dianpu-grey">(1189人)</span>
+								</div>
+							</div>
+						</div>
+						<div class="cainixihuang">
+							<h5>猜你喜欢</h5>
+							<ul>
+								<li><img src="../../static/images/bed1.png"></li>
+								<li><img src="../../static/images/bed2.png"></li>
+								<li><img src="../../static/images/bed3.png"></li>
+								<li><img src="../../static/images/bed4.png"></li>
+								<li><img src="../../static/images/bed5.png"></li>
+								<li><img src="../../static/images/bed6.png"></li>
+								<li><img src="../../static/images/bed7.png"></li>
+								<li><img src="../../static/images/bed8.png"></li>
+								<li><img src="../../static/images/bed1.png"></li>
+								<li><img src="../../static/images/bed2.png"></li>
+								<li><img src="../../static/images/bed3.png"></li>
+								<li><img src="../../static/images/bed4.png"></li>
+								<li><img src="../../static/images/bed5.png"></li>
+								<li><img src="../../static/images/bed6.png"></li>
+								<li><img src="../../static/images/bed7.png"></li>
+								<li><img src="../../static/images/bed8.png"></li>
+								<li><img src="../../static/images/bed1.png"></li>
+								<li><img src="../../static/images/bed2.png"></li>
+								<li><img src="../../static/images/bed3.png"></li>
+								<li><img src="../../static/images/bed4.png"></li>
+								<li><img src="../../static/images/bed5.png"></li>
+								<li><img src="../../static/images/bed6.png"></li>
+								<li><img src="../../static/images/bed7.png"></li>
+								<li><img src="../../static/images/bed8.png"></li>
+								<li><img src="../../static/images/bed1.png"></li>
+								<li><img src="../../static/images/bed2.png"></li>
+								<li><img src="../../static/images/bed3.png"></li>
+								<li><img src="../../static/images/bed4.png"></li>
+								<li><img src="../../static/images/bed5.png"></li>
+								<li><img src="../../static/images/bed6.png"></li>
+								<li><img src="../../static/images/bed7.png"></li>
+								<li><img src="../../static/images/bed8.png"></li>
+								<li><img src="../../static/images/bed1.png"></li>
+								<li><img src="../../static/images/bed2.png"></li>
+								<li><img src="../../static/images/bed3.png"></li>
+								<li><img src="../../static/images/bed4.png"></li>
+								<li><img src="../../static/images/bed5.png"></li>
+								<li><img src="../../static/images/bed6.png"></li>
+								<li><img src="../../static/images/bed7.png"></li>
+								<li><img src="../../static/images/bed8.png"></li>
+								<li><img src="../../static/images/bed1.png"></li>
+								<li><img src="../../static/images/bed2.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</section>
+   <!--尾部-->
+   <footer>
+	<div class="footer-top">
+		<div class="title">
+			<ul>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+				<li>秋冬磨毛</li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="content-neirong">
+				<p><img src="../../static/images/content-top.png" alt=""></p>
+				<span><img src="../../static/images/content1.png" alt=""></span>
+				<span><img src="../../static/images/content2.png" alt=""></span>
+				<span><img src="../../static/images/content3.png" alt=""></span>
+				<span><img src="../../static/images/content4.png" alt=""></span>
+				<span  class="content-las">
+					<img src="../../static/images/content5.png" alt=""></span>
+			</div>
+			<div class="content-moslas">
+				<img src="../../static/images/foot-neirong2.png" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="foot-center">
+		<div class="foot-one">
+			<img src="../../static/images/foot-center1.png" alt="">
+			<img src="../../static/images/foot-center2.png" alt="">
+			<img src="../../static/images/foot-center3.png" alt="">
+			<img src="../../static/images/foot-center2.png" alt="">
+		</div>
+		<div class="foot-two">
+			<ul>
+				<li><dl>
+					<dt>天猫保障</dt>
+					<dd>发票保障</dd>
+					<dd>售后规则</dd>
+					<dd>缺货赔付</dd>
+				</dl></li>
+				<li><dl>
+					<dt>天猫保障</dt>
+					<dd>发票保障</dd>
+					<dd>售后规则</dd>
+					<dd>缺货赔付</dd>
+				</dl></li>
+				<li><dl>
+					<dt>天猫保障</dt>
+					<dd>发票保障</dd>
+					<dd>售后规则</dd>
+					<dd>缺货赔付</dd>
+				</dl></li>
+				<li><dl>
+					<dt>天猫保障</dt>
+					<dd>发票保障</dd>
+					<dd>售后规则</dd>
+					<dd>缺货赔付</dd>
+				</dl></li>
+				<li>
+					<p>手机天猫</p>
+					<img src="../../static/images/foot-erwei.png" alt="">
+				</li>
+				<li class="foot-last"><img src="../../static/images/foot-cat.png" alt=""></li>
+			</ul>
+		</div>
+	</div>
+	<div class="foot-bottom">
+		<div class="box-center">
+			<p>关于天猫 帮助中心 开放平台 诚聘英才 联系我们 网站合作 法律声明 隐私权政策 知识产权 廉正举报</p>
+			<p>
+				<a>阿里巴巴集团|</a>
+			    <a>淘宝网 |</a>
+				<a>天猫 |</a>
+				<a>聚划算 |</a>
+				<a>全球速卖通 |</a>
+				<a>阿里巴巴国际交易市场|</a>
+				<a>1688 |</a>
+				<a>阿里妈妈 |</a>
+				<a>飞猪 |</a>
+				<a>阿里云计算 |</a>
+				<a>AliOS |</a>
+				<a>阿里通信 |</a>
+				<a>万网 |</a>
+				<a>高德 |</a>
+				<a>UC |</a>
+				<a>友盟 |</a>
+				<a>虾米 |</a>
+				<a>阿里星球 |</a>
+				<a>来往 |</a>
+				<a>钉钉 |</a>
+				<a>支付宝</a>
+			</p>
+			<p class="box-dir">增值电信业务经营许可证： 浙B2-20110446 网络文化经营许可证：浙网文[2015]0295-065号 12318举报 互联网违法和不良信息举报电话：0571-81683755 blxxjb@alibaba-inc.com </p>
+			<p class="box-dir">
+				互联网药品信息服务资质证书编号：浙-（经营性）-2017-0005
+				<img src="../../static/images/box-center.png" alt="">
+				浙公网安备 33010002000120号
+			</p>
+			<p class="box-las">© 2003-2018 TMALL.COM 版权所有</p>
+		</div>
+
+	</div>
+   </footer>
+
+</body>
+</html>
